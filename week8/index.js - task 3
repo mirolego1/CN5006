@@ -19,13 +19,19 @@ const PersonScheme = new mongoose.Schema({
 // creating model named as modelname with collection named as personCollection
 const person_doc = mongoose.model('modelname', PersonScheme, 'personCollection');
 
-// creating a single document
-const doc1 = new person_doc({ name: "Jacky", age: 36, Gender: "Male", Salary: 3456 });
-
-// adding one document in the collection
-doc1
-    .save()
-    .then((doc1) => {
-        console.log("New Article Has Been Added Into Your Database.", doc1);
+// finding all the documents in the collection
+person_doc.find({})
+    .sort({ Salary: 1 }) // Sort ascending by Salary
+    .select('name Salary age') // Select only name, Salary, and age
+    .limit(10) // Limit to 10 items
+    .exec()
+    .then(docs => {
+        // Execute the query
+        console.log("Showing multiple documents:");
+        docs.forEach(function(Doc) {
+            console.log(Doc.age, Doc.name);
+        });
     })
-    .catch((err) => { console.error(err); });
+    .catch(err => {
+        console.error(err); // Log the error correctly
+    });
