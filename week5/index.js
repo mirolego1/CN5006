@@ -1,18 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import ToggleMode from './reportWebVitals'
-import GreetingElement from './myGreetingApp';
-
-
+import GreetingElement from './myGreetingApp'
+import AppColor from './AppbackgroundColor'
+import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
-<React.Fragment>
-<GreetingElement/>
-</React.Fragment>,
-document.getElementById('root'));
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-
+<React.StrictMode>
+<AppColor heading="This is first element" lbl=
+"Name :" color="green"/>
+<AppColor heading="This is second element" lbl
+="Name :" color="blue"/>
+<AppColor heading="This is third third element
+" lbl="Name :" color="Yellow"/>
+</React.StrictMode>,
+document.getElementById('root')
+);
+reportWebVitals();
 
